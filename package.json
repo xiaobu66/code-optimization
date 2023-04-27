@@ -1,0 +1,77 @@
+{
+  "name": "hdkj-sky",
+  "displayName": "问天AI助手-基于chatgpt",
+  "description": "原汁原味的chatgpt!用来优化代码,太好用啦!",
+  "version": "0.0.2",
+  "publisher":"hdkj-sky",
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "keywords": [
+    "chatgpt",
+    "代码优化"
+  ],
+  "icon": "images/logo.jpg",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "code-optimization.doopt",
+        "title": "优化代码"
+      },
+      {
+        "command": "code-optimization.opt",
+        "title": "问天AI助手"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "code-optimization.opt",
+          "group": "navigation"
+        }
+      ],
+      "editor/context":[
+        {
+          "command": "code-optimization.doopt",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings":[
+      
+      {"key": "alt+8","command": "code-optimization.opt","when": "editorTextFocus"}
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.76.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.34.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "@vscode/test-electron": "^2.2.3"
+  }
+}

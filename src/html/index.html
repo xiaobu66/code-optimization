@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body>
+     <iframe id="mysite" style="height:100vh;width:100vw" src="https://www.h3d.cc" ></iframe>
+
+  <script>
+
+       const mysite = document.getElementById('mysite')
+        
+        window.onmessage= (event)=>{
+          console.log(event)
+          const data = event.data;
+          if(!event.origin.includes('vscode-webview')){
+               return
+          }
+          mysite.contentWindow.postMessage(data,"*")
+        }
+
+  </script>
+</body>
+
+</html>
